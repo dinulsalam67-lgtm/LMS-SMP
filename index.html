@@ -1,0 +1,321 @@
+﻿<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathLearn - LMS Matematika Kelas VII</title>
+    <meta name="description"
+        content="Platform pembelajaran matematika modern untuk siswa SMP Kelas VII dengan Kurikulum Merdeka">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/game-pinang-contextual.css">
+    <link rel="stylesheet" href="styles/game-fighter-jet.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Main App -->
+    <div id="mainApp" class="page active">
+        <!-- Sidebar Menu -->
+        <div id="sidebar" class="sidebar">
+            <div class="sidebar-header">
+                <h2><i class="fas fa-calculator"></i> MathLearn</h2>
+                <button class="sidebar-close" onclick="toggleSidebar()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="sidebar-link active" data-page="beranda" onclick="navigateFromSidebar('beranda')">
+                    <i class="fas fa-home"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="materi" onclick="navigateFromSidebar('materi')">
+                    <i class="fas fa-book"></i>
+                    <span>Materi</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="video" onclick="navigateFromSidebar('video')">
+                    <i class="fas fa-play-circle"></i>
+                    <span>Video</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="game" onclick="navigateFromSidebar('game')">
+                    <i class="fas fa-gamepad"></i>
+                    <span>Game Battle</span>
+                </a>
+                <a href="#" class="sidebar-link" data-page="kokurikuler" onclick="navigateFromSidebar('kokurikuler')">
+                    <i class="fas fa-trophy"></i>
+                    <span>Kokurikuler</span>
+                </a>
+            </div>
+            <div class="sidebar-footer">
+                <button class="sidebar-theme-toggle" onclick="toggleTheme()">
+                    <i class="fas fa-moon"></i>
+                    <span>Mode Gelap</span>
+                </button>
+                <div class="sidebar-user">
+                    <img src="https://ui-avatars.com/api/?name=Siswa&background=4F46E5&color=fff" alt="User">
+                    <span id="sidebarUserName">Siswa</span>
+                </div>
+                <button class="sidebar-logout" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Keluar</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Sidebar Overlay -->
+        <div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <button class="hamburger-menu" onclick="toggleSidebar()">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="nav-brand">
+                    <i class="fas fa-calculator"></i>
+                    <span>MathLearn</span>
+                </div>
+                <div class="nav-user">
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="user-profile">
+                        <img src="https://ui-avatars.com/api/?name=Siswa&background=4F46E5&color=fff" alt="User">
+                        <span id="userName">Siswa</span>
+                    </div>
+                    <button class="logout-btn" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Content Area -->
+        <main class="main-content">
+            <!-- Beranda Page -->
+            <div id="berandaPage" class="content-page active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Selamat Datang di MathLearn Desy Rahayu, S.Pd., M.Pd., Gr. ! 🎓</h1>
+                        <p class="hero-subtitle">Platform pembelajaran matematika modern untuk Kelas VII</p>
+                        <div class="hero-stats">
+                            <div class="stat-card">
+                                <i class="fas fa-book-open"></i>
+                                <div>
+                                    <h3>6 Bab</h3>
+                                    <p>Materi Lengkap</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-video"></i>
+                                <div>
+                                    <h3>8+ Video</h3>
+                                    <p>Pembelajaran</p>
+                                </div>
+                            </div>
+                            <div class="stat-card">
+                                <i class="fas fa-gamepad"></i>
+                                <div>
+                                    <h3>6 Game</h3>
+                                    <p>Battle Seru</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hero-image">
+                        <div class="hero-illustration">
+                            <i class="fas fa-square-root-alt"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-access">
+                    <h2 class="section-title">Akses Cepat</h2>
+                    <div class="quick-cards">
+                        <div class="quick-card" onclick="navigateTo('materi')">
+                            <div class="quick-icon"
+                                style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <h3>Materi Pembelajaran</h3>
+                            <p>6 Bab lengkap dengan contoh soal</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('video')">
+                            <div class="quick-icon"
+                                style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                <i class="fas fa-play-circle"></i>
+                            </div>
+                            <h3>Video Pembelajaran</h3>
+                            <p>Tonton video penjelasan materi</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('game')">
+                            <div class="quick-icon"
+                                style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h3>Game Battle</h3>
+                            <p>Asah kemampuan dengan game seru</p>
+                        </div>
+                        <div class="quick-card" onclick="navigateTo('kokurikuler')">
+                            <div class="quick-icon"
+                                style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3>Kokurikuler</h3>
+                            <p>Kegiatan ekstrakurikuler matematika</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-section">
+                <h2 class="section-title">Progress Pembelajaran</h2>
+                <div class="progress-card">
+                    <div class="progress-header">
+                        <h3>Kemajuan Belajar</h3>
+                        <span class="progress-percent">45%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 45%"></div>
+                    </div>
+                    <div class="progress-details">
+                        <div class="progress-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>3 dari 6 Bab Selesai</span>
+                        </div>
+                        <div class="progress-item">
+                            <i class="fas fa-trophy"></i>
+                            <span>12 Kuis Diselesaikan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="announcement-section">
+                <h2 class="section-title">Pengumuman Terbaru</h2>
+                <div class="announcement-card">
+                    <div class="announcement-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="announcement-content">
+                        <h3>Kuis Baru: Statistika</h3>
+                        <p>Kuis baru untuk materi Statistika sudah tersedia! Kerjakan sebelum tanggal 20 Desember
+                            2025.</p>
+                        <span class="announcement-date">12 Desember 2025</span>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="quote-section">
+                <div class="quote-card">
+                    <i class="fas fa-quote-left quote-icon"></i>
+                    <p class="quote-text">"Matematika adalah ratu dari ilmu pengetahuan dan aritmatika adalah ratu
+                        dari matematika."</p>
+                    <p class="quote-author">- Carl Friedrich Gauss</p>
+                </div>
+            </div>
+    </div>
+
+    <!-- Materi Page -->
+    <div id="materiPage" class="content-page">
+        <div class="page-header">
+            <h1>Materi Pembelajaran</h1>
+            <p>6 Bab Matematika Kelas VII - Kurikulum Merdeka</p>
+        </div>
+        <div class="materi-grid" id="materiGrid"></div>
+    </div>
+
+    <!-- Video Page -->
+    <div id="videoPage" class="content-page">
+        <div class="page-header">
+            <h1>Video Pembelajaran</h1>
+            <p>Tonton video penjelasan untuk setiap materi</p>
+        </div>
+        <div class="video-grid" id="videoGrid"></div>
+    </div>
+
+    <!-- Game Page -->
+    <div id="gamePage" class="content-page">
+        <div class="page-header">
+            <h1>Game Battle Matematika</h1>
+            <p>Asah kemampuan dengan game battle seru!</p>
+        </div>
+        <div class="game-grid" id="gameGrid"></div>
+    </div>
+
+    <!-- Kokurikuler Page -->
+    <div id="kokurikulerPage" class="content-page">
+        <div class="page-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1>Kokurikuler Matematika</h1>
+                    <p>Kegiatan ekstrakurikuler untuk mengembangkan minat dan bakat matematika</p>
+                </div>
+                <div class="header-actions">
+                    <a href="https://docs.google.com/spreadsheets/d/15297HwHB9CROs8lg7IPf41HUQrpaIAb_xsYWBbfsOUw/edit?usp=sharing"
+                        target="_blank" class="btn-spreadsheet">
+                        <i class="fas fa-table"></i>
+                        <span>Daftar Peserta Kokurikuler</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="kokurikuler-grid" id="kokurikulerGrid"></div>
+    </div>
+
+    <!-- Tugas Page -->
+    <div id="tugasPage" class="content-page">
+        <div class="page-header">
+            <h1>Tugas & Kuis</h1>
+            <p>Kerjakan tugas dan kuis untuk mengukur pemahamanmu</p>
+        </div>
+        <div class="tugas-container" id="tugasContainer"></div>
+    </div>
+    </main>
+    </div>
+
+    <!-- Modal untuk Detail Materi -->
+    <div id="materiModal" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('materiModal')">&times;</button>
+            <div id="materiModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Game -->
+    <div id="gameModal" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('gameModal')">&times;</button>
+            <div id="gameModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Kuis -->
+    <div id="kuisModal" class="modal">
+        <div class="modal-content modal-large">
+            <button class="modal-close" onclick="closeModal('kuisModal')">&times;</button>
+            <div id="kuisModalContent"></div>
+        </div>
+    </div>
+
+    <script src="scripts/data.js"></script>
+    <script src="scripts/auth.js"></script>
+    <script src="scripts/navigation.js"></script>
+    <script src="scripts/materi.js"></script>
+    <script src="scripts/video.js"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/game-pinang-contextual.js"></script>
+    <script src="scripts/game-fighter-jet.js"></script>
+    <script src="scripts/game-jet-duel.js"></script>
+    <script src="scripts/game-math-battle-jet.js"></script>
+    <script src="scripts/tugas.js"></script>
+    <script src="scripts/kokurikuler.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>
